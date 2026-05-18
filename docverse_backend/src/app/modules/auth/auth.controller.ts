@@ -45,7 +45,33 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+const getMe = async (req: Request, res: Response) => {
+  try {
+    const user = await AuthServices.getMe(req.user.id);
+
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error: any) {
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+const logoutUser = async (req: Request, res: Response) => {
+  res.clearCookie("token");
+
+  res.status(200).json({
+    success: true,
+    message: "Logout successful",
+  });
+};
+
 export const AuthControllers = {
   registerUser,
   loginUser,
+  getMe,
+  logoutUser,
 };
