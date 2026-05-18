@@ -1,0 +1,22 @@
+model Payment {
+  id                      String           @id @default(uuid())
+
+  stripePaymentIntentId   String?
+
+  amount                  Float
+
+  status                  PaymentStatus    @default(PENDING)
+
+  paymentType             PaymentType
+
+  createdAt               DateTime         @default(now())
+
+  // FOREIGN KEY
+  userId                  String
+
+  // RELATIONS
+  user                    User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  purchases               Purchase[]
+  borrows                 Borrow[]
+}

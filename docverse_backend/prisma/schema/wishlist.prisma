@@ -1,0 +1,16 @@
+model Wishlist {
+  id           String      @id @default(uuid())
+
+  createdAt    DateTime    @default(now())
+
+  // FOREIGN KEYS
+  userId       String
+  bookId       String
+
+  // RELATIONS
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  book         Book        @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, bookId])
+}

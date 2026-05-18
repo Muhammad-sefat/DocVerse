@@ -1,0 +1,19 @@
+model Purchase {
+  id           String      @id @default(uuid())
+
+  amount       Float
+
+  createdAt    DateTime    @default(now())
+
+  // FOREIGN KEYS
+  userId       String
+  bookId       String
+  paymentId    String
+
+  // RELATIONS
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  book         Book        @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  payment      Payment     @relation(fields: [paymentId], references: [id])
+}

@@ -1,0 +1,35 @@
+model Book {
+  id              String      @id @default(uuid())
+
+  title           String
+  description     String
+
+  coverImage      String
+  pdfUrl          String
+
+  price           Float
+  borrowPrice     Float
+  borrowDuration  Int
+
+  totalPages      Int
+  previewPages    Int         @default(8)
+
+  isPublished     Boolean     @default(true)
+
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  // FOREIGN KEYS
+  authorId        String
+  categoryId      String
+
+  // RELATIONS
+  author          User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  category        Category    @relation(fields: [categoryId], references: [id])
+
+  purchases       Purchase[]
+  borrows         Borrow[]
+  reviews         Review[]
+  wishlists       Wishlist[]
+}

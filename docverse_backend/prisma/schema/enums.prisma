@@ -1,0 +1,16 @@
+enum UserRole {
+  USER
+  AUTHOR
+  ADMIN
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum PaymentType {
+  PURCHASE
+  BORROW
+}
