@@ -7,7 +7,7 @@ model Borrow {
   expireDate    DateTime
 
   isExpired     Boolean     @default(false)
-
+  
   createdAt     DateTime    @default(now())
 
   // FOREIGN KEYS
