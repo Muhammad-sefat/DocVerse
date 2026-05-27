@@ -17,6 +17,11 @@ const createCheckoutSession = async (
     throw new Error("Book not found");
   }
 
+  // Validate borrow has days
+  if (payload.paymentType === "BORROW" && !payload.borrowDays) {
+    throw new Error("Borrow days is required for borrowing");
+  }
+
   // PRICE
   const amount =
     payload.paymentType === "PURCHASE" ? book.price : book.borrowPrice;
@@ -43,9 +48,9 @@ const createCheckoutSession = async (
       },
     ],
 
-    success_url: `${process.env.CLIENT_URL}/success`,
+    success_url: `${process.env.CLIENT_URL || "http://localhost:3000"}/success`,
 
-    cancel_url: `${process.env.CLIENT_URL}/cancel`,
+    cancel_url: `${process.env.CLIENT_URL || "http://localhost:3000"}/cancel`,
 
     metadata: {
       userId,
@@ -61,6 +66,80 @@ const createCheckoutSession = async (
   return session;
 };
 
+const getMyPayments = async (userId: string) => {
+  const payments = await prisma.payment.findMany({
+    where: { userId },
+    include: {
+      purchases: {
+        include: {
+          book: {
+            select: {
+              id: true,
+              title: true,
+              coverImage: true,
+            },
+          },
+        },
+      },
+      borrows: {
+        include: {
+          book: {
+            select: {
+              id: true,
+              title: true,
+              coverImage: true,
+            },
+          },
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return payments;
+};
+
+const getAllPayments = async () => {
+  const payments = await prisma.payment.findMany({
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+        },
+      },
+      purchases: {
+        include: {
+          book: {
+            select: {
+              id: true,
+              title: true,
+              coverImage: true,
+            },
+          },
+        },
+      },
+      borrows: {
+        include: {
+          book: {
+            select: {
+              id: true,
+              title: true,
+              coverImage: true,
+            },
+          },
+        },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return payments;
+};
+
 export const PaymentServices = {
   createCheckoutSession,
+  getMyPayments,
+  getAllPayments,
 };

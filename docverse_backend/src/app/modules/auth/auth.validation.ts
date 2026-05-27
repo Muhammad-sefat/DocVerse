@@ -1,11 +1,13 @@
-export interface IRegisterUser {
-  name: string;
-  email: string;
-  password: string;
-  role?: "USER" | "AUTHOR";
-}
+import { z } from "zod";
 
-export interface ILoginUser {
-  email: string;
-  password: string;
-}
+export const registerUserValidationSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  password: z.string().min(6),
+  role: z.enum(["USER", "AUTHOR"]).optional(),
+});
+
+export const loginUserValidationSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});

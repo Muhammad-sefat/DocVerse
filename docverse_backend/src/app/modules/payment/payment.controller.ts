@@ -14,12 +14,33 @@ const createCheckoutSession = catchAsync(
 
     res.status(200).json({
       success: true,
-
       data: result,
     });
   },
 );
 
+const getMyPayments = catchAsync(async (req: Request, res: Response) => {
+  const userId = req.user.id;
+
+  const result = await PaymentServices.getMyPayments(userId);
+
+  res.status(200).json({
+    success: true,
+    data: result,
+  });
+});
+
+const getAllPayments = catchAsync(async (req: Request, res: Response) => {
+  const result = await PaymentServices.getAllPayments();
+
+  res.status(200).json({
+    success: true,
+    data: result,
+  });
+});
+
 export const PaymentControllers = {
   createCheckoutSession,
+  getMyPayments,
+  getAllPayments,
 };

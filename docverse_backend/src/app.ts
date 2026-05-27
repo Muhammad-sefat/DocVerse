@@ -5,7 +5,13 @@ import { setupSwagger } from "./app/config/swagger";
 import router from "./app/routes";
 
 const app = express();
-app.use(cors());
+
+// Stripe webhook needs raw body for signature verification - must be before express.json()
+app.use(
+  "/api/v1/payments/webhook",
+  express.raw({ type: "application/json" }),
+);
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -27,4 +33,5 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.use("/api/v1", router);
+
 export default app;
