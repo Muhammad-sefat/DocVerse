@@ -60,11 +60,17 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section ref={heroRef} className="about-hero gradient-hero py-24 md:py-32">
+      <section
+        ref={heroRef}
+        className="about-hero gradient-hero py-16 lg:py-24"
+      >
         <div className="page-container text-center">
-          <h1 className="text-4xl font-bold text-white md:text-6xl">About DocVerse</h1>
+          <h1 className="text-4xl font-bold text-white md:text-6xl">
+            About DocVerse
+          </h1>
           <p className="mt-4 text-lg text-white/70 max-w-2xl mx-auto">
-            We're on a mission to make knowledge and literature accessible to everyone, everywhere.
+            Were on a mission to make knowledge and literature accessible to
+            everyone, everywhere.
           </p>
         </div>
       </section>
@@ -78,7 +84,9 @@ export default function AboutPage() {
                 <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-primary-50">
                   <stat.icon className="h-8 w-8 text-primary-700" />
                 </div>
-                <p className="mt-4 text-3xl font-bold text-secondary-900">{stat.value}</p>
+                <p className="mt-4 text-3xl font-bold text-secondary-900">
+                  {stat.value}
+                </p>
                 <p className="mt-1 text-sm text-secondary-500">{stat.label}</p>
               </div>
             ))}
@@ -91,24 +99,32 @@ export default function AboutPage() {
         <div className="page-container">
           <div className="grid gap-12 lg:grid-cols-2">
             <div className="reveal-item">
-              <h2 className="text-3xl font-bold text-secondary-900">Our Story</h2>
+              <h2 className="text-3xl font-bold text-secondary-900">
+                Our Story
+              </h2>
               <p className="mt-4 text-secondary-600 leading-relaxed">
-                Founded in 2024, DocVerse was born from a simple idea: that great books should be 
-                accessible to everyone. What started as a small digital library has grown into a 
-                thriving platform connecting thousands of readers with authors from around the world.
+                Founded in 2024, DocVerse was born from a simple idea: that
+                great books should be accessible to everyone. What started as a
+                small digital library has grown into a thriving platform
+                connecting thousands of readers with authors from around the
+                world.
               </p>
               <p className="mt-4 text-secondary-600 leading-relaxed">
-                We believe in the power of stories to transform lives, educate minds, and bridge 
-                cultures. Our platform not only provides access to thousands of books but also 
-                empowers authors to reach new audiences and build sustainable careers.
+                We believe in the power of stories to transform lives, educate
+                minds, and bridge cultures. Our platform not only provides
+                access to thousands of books but also empowers authors to reach
+                new audiences and build sustainable careers.
               </p>
             </div>
             <div className="reveal-item">
-              <h2 className="text-3xl font-bold text-secondary-900">Our Mission</h2>
+              <h2 className="text-3xl font-bold text-secondary-900">
+                Our Mission
+              </h2>
               <p className="mt-4 text-secondary-600 leading-relaxed">
-                To democratize access to knowledge and literature by building the world's most 
-                accessible digital library platform. We're committed to supporting authors, 
-                rewarding creativity, and fostering a global community of readers.
+                To democratize access to knowledge and literature by building
+                the worlds most accessible digital library platform. Were
+                committed to supporting authors, rewarding creativity, and
+                fostering a global community of readers.
               </p>
               <div className="mt-6 space-y-4">
                 {[
@@ -134,12 +150,24 @@ export default function AboutPage() {
       <section className="section-padding">
         <div className="page-container text-center">
           <h2 className="text-3xl font-bold text-secondary-900">Our Team</h2>
-          <p className="mt-2 text-secondary-500">Meet the people behind DocVerse</p>
+          <p className="mt-2 text-secondary-500">
+            Meet the people behind DocVerse
+          </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {teamMembers.map((member) => (
-              <div key={member.id} className="rounded-xl border bg-white p-6 card-shadow text-center">
-                <Avatar src={member.avatar} alt={member.name} size="xl" className="mx-auto ring-4 ring-primary-100" />
-                <h3 className="mt-4 font-semibold text-secondary-900">{member.name}</h3>
+              <div
+                key={member.id}
+                className="rounded-xl border bg-white p-6 card-shadow text-center"
+              >
+                <Avatar
+                  src={member.avatar}
+                  alt={member.name}
+                  size="xl"
+                  className="mx-auto ring-4 ring-primary-100"
+                />
+                <h3 className="mt-4 font-semibold text-secondary-900">
+                  {member.name}
+                </h3>
                 <p className="text-sm text-secondary-500">{member.role}</p>
               </div>
             ))}
@@ -150,19 +178,28 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="section-padding gradient-hero">
         <div className="page-container text-center">
-          <h2 className="text-3xl font-bold text-white md:text-4xl">Join Our Community</h2>
+          <h2 className="text-3xl font-bold text-white md:text-4xl">
+            Join Our Community
+          </h2>
           <p className="mt-3 text-lg text-white/70">
             Start your reading journey with DocVerse today.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link href="/register">
-              <Button size="lg" className="bg-white text-primary-800 hover:bg-white/90">
+              <Button
+                size="lg"
+                className="bg-white text-primary-800 hover:bg-white/90 cursor-pointer"
+              >
                 Get Started Free
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-white text-primary-800 hover:bg-white/90 cursor-pointer"
+              >
                 Contact Us
               </Button>
             </Link>

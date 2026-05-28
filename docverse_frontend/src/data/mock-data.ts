@@ -92,7 +92,8 @@ export const mockCategories = [
     id: "cat-1",
     name: "Fiction",
     description: "Imaginative and narrative works of literature",
-    image: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
     bookCount: 24,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -100,7 +101,8 @@ export const mockCategories = [
     id: "cat-2",
     name: "Science Fiction",
     description: "Speculative fiction exploring futuristic concepts",
-    image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
     bookCount: 18,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -108,7 +110,8 @@ export const mockCategories = [
     id: "cat-3",
     name: "Mystery",
     description: "Suspenseful stories of crime and investigation",
-    image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
     bookCount: 15,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -116,7 +119,8 @@ export const mockCategories = [
     id: "cat-4",
     name: "Romance",
     description: "Love stories and emotional relationships",
-    image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=300&fit=crop",
     bookCount: 12,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -124,7 +128,8 @@ export const mockCategories = [
     id: "cat-5",
     name: "Non-Fiction",
     description: "Factual and informative literary works",
-    image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=300&fit=crop",
     bookCount: 20,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -132,7 +137,8 @@ export const mockCategories = [
     id: "cat-6",
     name: "History",
     description: "Historical accounts and analyses",
-    image: "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=400&h=300&fit=crop",
     bookCount: 10,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -140,7 +146,8 @@ export const mockCategories = [
     id: "cat-7",
     name: "Technology",
     description: "Books about tech, programming, and digital innovation",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
     bookCount: 16,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -148,7 +155,8 @@ export const mockCategories = [
     id: "cat-8",
     name: "Self-Help",
     description: "Personal development and improvement guides",
-    image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=300&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=300&fit=crop",
     bookCount: 14,
     createdAt: "2024-01-01T10:00:00Z",
   },
@@ -158,8 +166,10 @@ export const mockBooks = [
   {
     id: "book-1",
     title: "The Shadow Protocol",
-    description: "When a former intelligence analyst discovers a covert operation threatening global security, she must navigate a web of deception and betrayal. A gripping thriller that will keep you on the edge of your seat until the very last page. The Shadow Protocol is a masterfully crafted tale of espionage, loyalty, and the high cost of truth in a world of lies.",
-    coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+    description:
+      "When a former intelligence analyst discovers a covert operation threatening global security, she must navigate a web of deception and betrayal. A gripping thriller that will keep you on the edge of your seat until the very last page. The Shadow Protocol is a masterfully crafted tale of espionage, loyalty, and the high cost of truth in a world of lies.",
+    coverImage:
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
     pdfUrl: "/books/shadow-protocol.pdf",
     previewPages: [
       "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&h=1200&fit=crop",
@@ -188,7 +198,8 @@ export const mockBooks = [
       id: "cat-3",
       name: "Mystery",
       description: "Suspenseful stories of crime and investigation",
-      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
       bookCount: 15,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -203,8 +214,10 @@ export const mockBooks = [
   {
     id: "book-2",
     title: "Echoes of Tomorrow",
-    description: "In a world where time travel is possible but strictly controlled, one scientist discovers a way to communicate with the past. As she unravels the consequences of altering history, she must make an impossible choice that could save millions or destroy everything.",
-    coverImage: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=600&fit=crop",
+    description:
+      "In a world where time travel is possible but strictly controlled, one scientist discovers a way to communicate with the past. As she unravels the consequences of altering history, she must make an impossible choice that could save millions or destroy everything.",
+    coverImage:
+      "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=600&fit=crop",
     pdfUrl: "/books/echoes-tomorrow.pdf",
     previewPages: [
       "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=800&h=1200&fit=crop",
@@ -232,7 +245,8 @@ export const mockBooks = [
       id: "cat-2",
       name: "Science Fiction",
       description: "Speculative fiction exploring futuristic concepts",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
       bookCount: 18,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -247,8 +261,10 @@ export const mockBooks = [
   {
     id: "book-3",
     title: "Empire of Sand",
-    description: "An epic historical novel set in ancient Mesopotamia, following the rise and fall of a great civilization through the eyes of a young scribe who witnesses history unfold.",
-    coverImage: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=600&fit=crop",
+    description:
+      "An epic historical novel set in ancient Mesopotamia, following the rise and fall of a great civilization through the eyes of a young scribe who witnesses history unfold.",
+    coverImage:
+      "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=600&fit=crop",
     pdfUrl: "/books/empire-sand.pdf",
     previewPages: [
       "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=800&h=1200&fit=crop",
@@ -275,7 +291,8 @@ export const mockBooks = [
       id: "cat-6",
       name: "History",
       description: "Historical accounts and analyses",
-      image: "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1461360228754-6e81c478b882?w=400&h=300&fit=crop",
       bookCount: 10,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -290,8 +307,10 @@ export const mockBooks = [
   {
     id: "book-4",
     title: "Hearts in Kyoto",
-    description: "A beautiful romance set against the cherry blossoms of Kyoto, Japan. Two strangers from different worlds find love in the most unexpected place, challenging everything they thought they knew about life and love.",
-    coverImage: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=600&fit=crop",
+    description:
+      "A beautiful romance set against the cherry blossoms of Kyoto, Japan. Two strangers from different worlds find love in the most unexpected place, challenging everything they thought they knew about life and love.",
+    coverImage:
+      "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=600&fit=crop",
     pdfUrl: "/books/hearts-kyoto.pdf",
     previewPages: [
       "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800&h=1200&fit=crop",
@@ -318,7 +337,8 @@ export const mockBooks = [
       id: "cat-4",
       name: "Romance",
       description: "Love stories and emotional relationships",
-      image: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400&h=300&fit=crop",
       bookCount: 12,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -333,8 +353,10 @@ export const mockBooks = [
   {
     id: "book-5",
     title: "The Quantum Paradox",
-    description: "When quantum computing achieves consciousness, humanity faces its greatest challenge yet. This mind-bending science fiction novel explores the boundaries of artificial intelligence and what it truly means to be alive.",
-    coverImage: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=600&fit=crop",
+    description:
+      "When quantum computing achieves consciousness, humanity faces its greatest challenge yet. This mind-bending science fiction novel explores the boundaries of artificial intelligence and what it truly means to be alive.",
+    coverImage:
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=600&fit=crop",
     pdfUrl: "/books/quantum-paradox.pdf",
     previewPages: [
       "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&h=1200&fit=crop",
@@ -361,7 +383,8 @@ export const mockBooks = [
       id: "cat-2",
       name: "Science Fiction",
       description: "Speculative fiction exploring futuristic concepts",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
       bookCount: 18,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -376,8 +399,10 @@ export const mockBooks = [
   {
     id: "book-6",
     title: "The Last Detective",
-    description: "In a world where AI handles all crime-solving, the last human detective must prove that intuition and empathy still matter. A compelling mystery that questions the role of humanity in an increasingly automated world.",
-    coverImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+    description:
+      "In a world where AI handles all crime-solving, the last human detective must prove that intuition and empathy still matter. A compelling mystery that questions the role of humanity in an increasingly automated world.",
+    coverImage:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
     pdfUrl: "/books/last-detective.pdf",
     previewPages: [],
     price: 22.99,
@@ -402,7 +427,8 @@ export const mockBooks = [
       id: "cat-3",
       name: "Mystery",
       description: "Suspenseful stories of crime and investigation",
-      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=300&fit=crop",
       bookCount: 15,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -417,8 +443,10 @@ export const mockBooks = [
   {
     id: "book-7",
     title: "Digital Horizons",
-    description: "A comprehensive guide to understanding and navigating the digital transformation era. Essential reading for professionals, entrepreneurs, and anyone looking to thrive in the digital age.",
-    coverImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=600&fit=crop",
+    description:
+      "A comprehensive guide to understanding and navigating the digital transformation era. Essential reading for professionals, entrepreneurs, and anyone looking to thrive in the digital age.",
+    coverImage:
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=600&fit=crop",
     pdfUrl: "/books/digital-horizons.pdf",
     previewPages: [],
     price: 34.99,
@@ -443,7 +471,8 @@ export const mockBooks = [
       id: "cat-7",
       name: "Technology",
       description: "Books about tech, programming, and digital innovation",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
       bookCount: 16,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -458,8 +487,10 @@ export const mockBooks = [
   {
     id: "book-8",
     title: "The Art of Resilience",
-    description: "Discover the science and practice of building mental toughness and emotional resilience. This self-help guide combines psychological research with practical exercises to help you thrive in the face of adversity.",
-    coverImage: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=600&fit=crop",
+    description:
+      "Discover the science and practice of building mental toughness and emotional resilience. This self-help guide combines psychological research with practical exercises to help you thrive in the face of adversity.",
+    coverImage:
+      "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=600&fit=crop",
     pdfUrl: "/books/art-resilience.pdf",
     previewPages: [],
     price: 18.99,
@@ -484,7 +515,8 @@ export const mockBooks = [
       id: "cat-8",
       name: "Self-Help",
       description: "Personal development and improvement guides",
-      image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=400&h=300&fit=crop",
       bookCount: 14,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -499,8 +531,10 @@ export const mockBooks = [
   {
     id: "book-9",
     title: "Beyond the Stars",
-    description: "An extraordinary journey through space and time, following a crew of astronauts on humanity's first interstellar mission. What they discover at the edge of known space will change our understanding of the universe forever.",
-    coverImage: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=600&fit=crop",
+    description:
+      "An extraordinary journey through space and time, following a crew of astronauts on humanity's first interstellar mission. What they discover at the edge of known space will change our understanding of the universe forever.",
+    coverImage:
+      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=600&fit=crop",
     pdfUrl: "/books/beyond-stars.pdf",
     previewPages: [],
     price: 27.99,
@@ -525,7 +559,8 @@ export const mockBooks = [
       id: "cat-2",
       name: "Science Fiction",
       description: "Speculative fiction exploring futuristic concepts",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&h=300&fit=crop",
       bookCount: 18,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -540,8 +575,10 @@ export const mockBooks = [
   {
     id: "book-10",
     title: "Whispers in the Wind",
-    description: "A hauntingly beautiful literary fiction set in the Scottish Highlands. When a stranger arrives in a small village, long-buried secrets begin to surface, threatening to unravel the fabric of the community.",
-    coverImage: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=600&fit=crop",
+    description:
+      "A hauntingly beautiful literary fiction set in the Scottish Highlands. When a stranger arrives in a small village, long-buried secrets begin to surface, threatening to unravel the fabric of the community.",
+    coverImage:
+      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=400&h=600&fit=crop",
     pdfUrl: "/books/whispers-wind.pdf",
     previewPages: [],
     price: 21.99,
@@ -566,7 +603,8 @@ export const mockBooks = [
       id: "cat-1",
       name: "Fiction",
       description: "Imaginative and narrative works of literature",
-      image: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
       bookCount: 24,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -581,8 +619,10 @@ export const mockBooks = [
   {
     id: "book-11",
     title: "The Innovation Code",
-    description: "Unlock the secrets of innovation with this practical guide to creative problem-solving. Learn how the world's most successful companies and individuals generate breakthrough ideas and bring them to life.",
-    coverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=600&fit=crop",
+    description:
+      "Unlock the secrets of innovation with this practical guide to creative problem-solving. Learn how the world's most successful companies and individuals generate breakthrough ideas and bring them to life.",
+    coverImage:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=600&fit=crop",
     pdfUrl: "/books/innovation-code.pdf",
     previewPages: [],
     price: 32.99,
@@ -607,7 +647,8 @@ export const mockBooks = [
       id: "cat-7",
       name: "Technology",
       description: "Books about tech, programming, and digital innovation",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
       bookCount: 16,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -622,8 +663,10 @@ export const mockBooks = [
   {
     id: "book-12",
     title: "Midnight Garden",
-    description: "A captivating novel about a mysterious garden that appears only at midnight, and the lives it touches across generations. Part magic realism, part family saga, this is a story about love, loss, and the healing power of nature.",
-    coverImage: "https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=400&h=600&fit=crop",
+    description:
+      "A captivating novel about a mysterious garden that appears only at midnight, and the lives it touches across generations. Part magic realism, part family saga, this is a story about love, loss, and the healing power of nature.",
+    coverImage:
+      "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
     pdfUrl: "/books/midnight-garden.pdf",
     previewPages: [],
     price: 20.99,
@@ -648,7 +691,8 @@ export const mockBooks = [
       id: "cat-1",
       name: "Fiction",
       description: "Imaginative and narrative works of literature",
-      image: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
+      image:
+        "https://images.unsplash.com/photo-1476275466078-4007374efbbe?w=400&h=300&fit=crop",
       bookCount: 24,
       createdAt: "2024-01-01T10:00:00Z",
     },
@@ -666,46 +710,71 @@ export const mockReviews = [
   {
     id: "review-1",
     userId: "user-1",
-    user: { id: "user-1", name: "John Doe", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john" },
+    user: {
+      id: "user-1",
+      name: "John Doe",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
+    },
     bookId: "book-1",
     rating: 5,
-    comment: "Absolutely gripping! Could not put it down. The plot twists are masterfully executed.",
+    comment:
+      "Absolutely gripping! Could not put it down. The plot twists are masterfully executed.",
     createdAt: "2024-04-01T10:00:00Z",
   },
   {
     id: "review-2",
     userId: "user-2",
-    user: { id: "user-2", name: "Sarah Johnson", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" },
+    user: {
+      id: "user-2",
+      name: "Sarah Johnson",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+    },
     bookId: "book-1",
     rating: 4,
-    comment: "Great thriller with well-developed characters. The ending was satisfying.",
+    comment:
+      "Great thriller with well-developed characters. The ending was satisfying.",
     createdAt: "2024-04-05T10:00:00Z",
   },
   {
     id: "review-3",
     userId: "user-1",
-    user: { id: "user-1", name: "John Doe", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john" },
+    user: {
+      id: "user-1",
+      name: "John Doe",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
+    },
     bookId: "book-2",
     rating: 5,
-    comment: "Emily Chen has outdone herself. The time travel mechanics are fascinating and well-thought-out.",
+    comment:
+      "Emily Chen has outdone herself. The time travel mechanics are fascinating and well-thought-out.",
     createdAt: "2024-03-01T10:00:00Z",
   },
   {
     id: "review-4",
     userId: "user-2",
-    user: { id: "user-2", name: "Sarah Johnson", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah" },
+    user: {
+      id: "user-2",
+      name: "Sarah Johnson",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
+    },
     bookId: "book-4",
     rating: 5,
-    comment: "The most beautiful love story I've read this year. Made me cry happy tears.",
+    comment:
+      "The most beautiful love story I've read this year. Made me cry happy tears.",
     createdAt: "2024-05-01T10:00:00Z",
   },
   {
     id: "review-5",
     userId: "user-1",
-    user: { id: "user-1", name: "John Doe", avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john" },
+    user: {
+      id: "user-1",
+      name: "John Doe",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
+    },
     bookId: "book-8",
     rating: 4,
-    comment: "Practical and inspiring. The exercises are genuinely helpful for building mental strength.",
+    comment:
+      "Practical and inspiring. The exercises are genuinely helpful for building mental strength.",
     createdAt: "2024-06-01T10:00:00Z",
   },
 ];
@@ -860,7 +929,8 @@ export const testimonials = [
     name: "Alex Rodriguez",
     role: "Software Engineer",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
-    content: "DocVerse has completely transformed how I discover and read books. The borrowing feature is a game-changer!",
+    content:
+      "DocVerse has completely transformed how I discover and read books. The borrowing feature is a game-changer!",
     rating: 5,
   },
   {
@@ -868,7 +938,8 @@ export const testimonials = [
     name: "Maria Garcia",
     role: "University Professor",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria",
-    content: "An incredible platform for both readers and authors. The selection is vast and the quality is outstanding.",
+    content:
+      "An incredible platform for both readers and authors. The selection is vast and the quality is outstanding.",
     rating: 5,
   },
   {
@@ -876,7 +947,8 @@ export const testimonials = [
     name: "David Kim",
     role: "Graduate Student",
     avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=david",
-    content: "The ability to borrow academic texts at such affordable prices has been invaluable for my research.",
+    content:
+      "The ability to borrow academic texts at such affordable prices has been invaluable for my research.",
     rating: 4,
   },
 ];

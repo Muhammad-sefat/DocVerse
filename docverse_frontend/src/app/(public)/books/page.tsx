@@ -34,7 +34,7 @@ export default function BooksPage() {
         (b) =>
           b.title.toLowerCase().includes(q) ||
           b.author.name.toLowerCase().includes(q) ||
-          b.description.toLowerCase().includes(q)
+          b.description.toLowerCase().includes(q),
       );
     }
 
@@ -53,7 +53,11 @@ export default function BooksPage() {
         books.sort((a, b) => b.rating - a.rating);
         break;
       default:
-        books.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+        books.sort(
+          (a, b) =>
+            new Date(b.publishedDate).getTime() -
+            new Date(a.publishedDate).getTime(),
+        );
     }
 
     return books;
@@ -62,7 +66,7 @@ export default function BooksPage() {
   const totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
   const paginatedBooks = filteredBooks.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   return (
@@ -72,7 +76,9 @@ export default function BooksPage() {
         <div className="page-container py-8">
           <div className="flex flex-col gap-6">
             <div>
-              <h1 className="text-3xl font-bold text-secondary-900">Browse Books</h1>
+              <h1 className="text-3xl font-bold text-secondary-900">
+                Browse Books
+              </h1>
               <p className="mt-1 text-secondary-500">
                 Discover your next great read from our extensive collection
               </p>
@@ -135,9 +141,15 @@ export default function BooksPage() {
 
             {/* Active Filters */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-secondary-500">Active filters:</span>
+              <span className="text-sm text-secondary-500">
+                Active filters:
+              </span>
               {selectedCategory && (
-                <Badge variant="secondary" className="cursor-pointer" onClick={() => setSelectedCategory("")}>
+                <Badge
+                  variant="secondary"
+                  className="cursor-pointer"
+                  onClick={() => setSelectedCategory("")}
+                >
                   {mockCategories.find((c) => c.id === selectedCategory)?.name}
                   <X className="ml-1 h-3 w-3" />
                 </Badge>
@@ -154,7 +166,7 @@ export default function BooksPage() {
         <div className="flex gap-8">
           {/* Sidebar Filters */}
           <aside
-            className={`${showFilters ? "fixed inset-0 z-40 flex" : "hidden"} lg:relative lg:flex lg:w-64 lg:flex-shrink-0`}
+            className={`${showFilters ? "fixed inset-0 z-40 flex" : "hidden"} lg:relative lg:flex lg:w-64 lg:shrink-0`}
           >
             {showFilters && (
               <div
@@ -162,7 +174,9 @@ export default function BooksPage() {
                 onClick={() => setShowFilters(false)}
               />
             )}
-            <div className={`relative z-50 h-full w-72 overflow-y-auto rounded-xl border bg-white p-6 lg:h-auto lg:w-full lg:shadow-sm`}>
+            <div
+              className={`relative z-50 h-full w-72 overflow-y-auto rounded-xl border bg-white p-6 lg:h-auto lg:w-full lg:shadow-sm`}
+            >
               <div className="flex items-center justify-between lg:hidden mb-4">
                 <h3 className="font-semibold text-secondary-900">Filters</h3>
                 <button onClick={() => setShowFilters(false)}>
@@ -172,12 +186,19 @@ export default function BooksPage() {
 
               {/* Category Filter */}
               <div className="mb-6">
-                <h4 className="mb-3 text-sm font-semibold text-secondary-900">Categories</h4>
+                <h4 className="mb-3 text-sm font-semibold text-secondary-900">
+                  Categories
+                </h4>
                 <div className="space-y-2">
                   <button
-                    onClick={() => { setSelectedCategory(""); setCurrentPage(1); }}
+                    onClick={() => {
+                      setSelectedCategory("");
+                      setCurrentPage(1);
+                    }}
                     className={`block w-full text-left rounded-lg px-3 py-2 text-sm transition-colors ${
-                      !selectedCategory ? "bg-primary-50 text-primary-700 font-medium" : "text-secondary-600 hover:bg-secondary-50"
+                      !selectedCategory
+                        ? "bg-primary-50 text-primary-700 font-medium"
+                        : "text-secondary-600 hover:bg-secondary-50"
                     }`}
                   >
                     All Categories
@@ -185,13 +206,21 @@ export default function BooksPage() {
                   {mockCategories.map((cat) => (
                     <button
                       key={cat.id}
-                      onClick={() => { setSelectedCategory(cat.id); setCurrentPage(1); setShowFilters(false); }}
+                      onClick={() => {
+                        setSelectedCategory(cat.id);
+                        setCurrentPage(1);
+                        setShowFilters(false);
+                      }}
                       className={`block w-full text-left rounded-lg px-3 py-2 text-sm transition-colors ${
-                        selectedCategory === cat.id ? "bg-primary-50 text-primary-700 font-medium" : "text-secondary-600 hover:bg-secondary-50"
+                        selectedCategory === cat.id
+                          ? "bg-primary-50 text-primary-700 font-medium"
+                          : "text-secondary-600 hover:bg-secondary-50"
                       }`}
                     >
                       <span>{cat.name}</span>
-                      <span className="ml-2 text-xs text-secondary-400">({cat.bookCount})</span>
+                      <span className="ml-2 text-xs text-secondary-400">
+                        ({cat.bookCount})
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -199,7 +228,9 @@ export default function BooksPage() {
 
               {/* Price Range */}
               <div>
-                <h4 className="mb-3 text-sm font-semibold text-secondary-900">Price Range</h4>
+                <h4 className="mb-3 text-sm font-semibold text-secondary-900">
+                  Price Range
+                </h4>
                 <div className="flex items-center gap-2">
                   <input
                     type="number"
@@ -222,7 +253,9 @@ export default function BooksPage() {
             {paginatedBooks.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-center">
                 <Search className="h-12 w-12 text-secondary-300" />
-                <h3 className="mt-4 text-lg font-semibold text-secondary-900">No books found</h3>
+                <h3 className="mt-4 text-lg font-semibold text-secondary-900">
+                  No books found
+                </h3>
                 <p className="mt-1 text-sm text-secondary-500">
                   Try adjusting your search or filter criteria
                 </p>
@@ -266,21 +299,25 @@ export default function BooksPage() {
                     >
                       Previous
                     </Button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                      <Button
-                        key={page}
-                        variant={currentPage === page ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setCurrentPage(page)}
-                        className="min-w-[36px]"
-                      >
-                        {page}
-                      </Button>
-                    ))}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <Button
+                          key={page}
+                          variant={currentPage === page ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setCurrentPage(page)}
+                          className="min-w-9"
+                        >
+                          {page}
+                        </Button>
+                      ),
+                    )}
                     <Button
                       variant="outline"
                       size="sm"
-                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      onClick={() =>
+                        setCurrentPage((p) => Math.min(totalPages, p + 1))
+                      }
                       disabled={currentPage === totalPages}
                     >
                       Next
