@@ -252,14 +252,14 @@ export default function HomePage() {
                   "Access your library anytime, anywhere on any device.",
                 color: "bg-green-100 text-green-600",
               },
-            ].map((step, i) => (
-              <div key={step.title} className="reveal-item text-center">
-                <div className="relative mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-lg">
+            ].map((step) => (
+              <div
+                key={step.title}
+                className="reveal-item text-center hover:border hover:border-secondary-200 rounded-lg p-6 transition-shadow hover:shadow-lg"
+              >
+                <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-lg">
                   <div className={`rounded-xl p-4 ${step.color}`}>
-                    <step.icon className="h-8 w-8" />
-                  </div>
-                  <div className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-primary-700 text-xs font-bold text-white">
-                    {i + 1}
+                    <step.icon className="h-6 w-6" />
                   </div>
                 </div>
                 <h3 className="mt-6 text-xl font-semibold text-secondary-900">
