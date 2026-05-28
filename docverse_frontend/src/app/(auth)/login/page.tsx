@@ -43,10 +43,14 @@ export default function LoginPage() {
       <div className="rounded-2xl border bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl gradient-primary">
-            <BookOpen className="h-6 w-6 text-white" />
-          </div>
-          <h1 className="mt-4 text-2xl font-bold text-secondary-900">Welcome Back</h1>
+          <Link href="/">
+            <div className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl gradient-primary">
+              <BookOpen className="h-6 w-6 text-white" />
+            </div>
+          </Link>
+          <h1 className="mt-4 text-2xl font-bold text-secondary-900">
+            Welcome Back
+          </h1>
           <p className="mt-1 text-sm text-secondary-500">
             Sign in to your DocVerse account
           </p>
@@ -63,7 +67,9 @@ export default function LoginPage() {
               className="mt-1.5"
             />
             {errors.email && (
-              <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
@@ -81,11 +87,17 @@ export default function LoginPage() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary-400 hover:text-secondary-600"
               >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -98,12 +110,21 @@ export default function LoginPage() {
               />
               <span className="text-sm text-secondary-600">Remember me</span>
             </label>
-            <Link href="#" className="text-sm text-primary-700 hover:text-primary-600">
+            <Link
+              href="#"
+              className="text-sm text-primary-700 hover:text-primary-600"
+            >
               Forgot password?
             </Link>
           </div>
 
-          <Button type="submit" variant="gradient" className="w-full" size="lg" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="gradient"
+            className="w-full"
+            size="lg"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <div className="flex items-center gap-2">
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -120,8 +141,11 @@ export default function LoginPage() {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-secondary-500">
-            Don't have an account?{" "}
-            <Link href="/register" className="font-medium text-primary-700 hover:text-primary-600">
+            Dont have an account?{" "}
+            <Link
+              href="/register"
+              className="font-medium text-primary-700 hover:text-primary-600"
+            >
               Create one
             </Link>
           </p>

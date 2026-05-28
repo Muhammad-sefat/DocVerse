@@ -54,10 +54,14 @@ export default function RegisterPage() {
       <div className="rounded-2xl border bg-white p-8 shadow-lg">
         {/* Header */}
         <div className="text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl gradient-primary">
-            <BookOpen className="h-6 w-6 text-white" />
-          </div>
-          <h1 className="mt-4 text-2xl font-bold text-secondary-900">Create Account</h1>
+          <Link href="/">
+            <div className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl gradient-primary">
+              <BookOpen className="h-6 w-6 text-white" />
+            </div>
+          </Link>
+          <h1 className="mt-4 text-2xl font-bold text-secondary-900">
+            Create Account
+          </h1>
           <p className="mt-1 text-sm text-secondary-500">
             Join DocVerse and start your reading journey
           </p>
@@ -74,10 +78,10 @@ export default function RegisterPage() {
                   type="button"
                   onClick={() => setValue("role", role)}
                   className={cn(
-                    "flex items-center justify-center gap-2 rounded-lg border-2 px-4 py-3 text-sm font-medium transition-all",
+                    "flex items-center justify-center gap-2 rounded-lg border-2 px-4 py-3 text-sm font-medium transition-all cursor-pointer",
                     selectedRole === role
                       ? "border-primary-500 bg-primary-50 text-primary-700"
-                      : "border-secondary-200 text-secondary-600 hover:border-secondary-300"
+                      : "border-secondary-200 text-secondary-600 hover:border-secondary-300",
                   )}
                 >
                   <User className="h-4 w-4" />
@@ -110,7 +114,9 @@ export default function RegisterPage() {
               className="mt-1.5"
             />
             {errors.email && (
-              <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.email.message}
+              </p>
             )}
           </div>
 
@@ -128,11 +134,17 @@ export default function RegisterPage() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary-400 hover:text-secondary-600"
               >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
               </button>
             </div>
             {errors.password && (
-              <p className="mt-1 text-xs text-red-500">{errors.password.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.password.message}
+              </p>
             )}
           </div>
 
@@ -146,13 +158,21 @@ export default function RegisterPage() {
               className="mt-1.5"
             />
             {errors.confirmPassword && (
-              <p className="mt-1 text-xs text-red-500">{errors.confirmPassword.message}</p>
+              <p className="mt-1 text-xs text-red-500">
+                {errors.confirmPassword.message}
+              </p>
             )}
           </div>
 
           <input type="hidden" {...register("role")} />
 
-          <Button type="submit" variant="gradient" className="w-full" size="lg" disabled={isLoading}>
+          <Button
+            type="submit"
+            variant="gradient"
+            className="w-full"
+            size="lg"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <div className="flex items-center gap-2">
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -170,7 +190,10 @@ export default function RegisterPage() {
         <div className="mt-6 text-center">
           <p className="text-sm text-secondary-500">
             Already have an account?{" "}
-            <Link href="/login" className="font-medium text-primary-700 hover:text-primary-600">
+            <Link
+              href="/login"
+              className="font-medium text-primary-700 hover:text-primary-600"
+            >
               Sign in
             </Link>
           </p>
