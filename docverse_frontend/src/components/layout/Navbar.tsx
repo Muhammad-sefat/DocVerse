@@ -1,32 +1,64 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, Search, User, BookOpen } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Menu, Search, User, BookOpen, LayoutDashboard, LogOut, ChevronDown } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Avatar } from "@/components/ui/avatar";
 import { Sheet } from "@/components/ui/sheet";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { APP_NAME, NAV_ITEMS } from "@/constants";
-
-// Mock user for UI demo
-const mockUser = {
-  name: "John Doe",
-  avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=john",
-  role: "USER",
-};
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { getProfile, logoutUser } from "@/redux/features/authSlice";
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { user, isAuthenticated } = useAppSelector((state) => state.auth);
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const isDashboard = pathname?.startsWith("/dashboard");
   const isAuth = pathname?.startsWith("/login") || pathname?.startsWith("/register");
 
+  // Fetch user profile on mount if authenticated
+  useEffect(() => {
+    if (!isAuthenticated && !isAuth && !isDashboard) {
+      dispatch(getProfile());
+    }
+  }, [dispatch, isAuthenticated, isAuth, isDashboard]);
+
   if (isDashboard || isAuth) return null;
+
+  const getDashboardLink = () => {
+    if (!user) return "/dashboard";
+    const role = user.role;
+    if (role === "ADMIN") return "/dashboard/admin";
+    if (role === "AUTHOR") return "/dashboard/author";
+    return "/dashboard/user/library";
+  };
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      const result = await dispatch(logoutUser()).unwrap();
+      toast.success(result.message || "Logged out successfully");
+      setPopoverOpen(false);
+      router.push("/");
+    } catch (error: any) {
+      toast.error(error || "Failed to logout");
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   return (
     <>
@@ -71,15 +103,47 @@ export function Navbar() {
             </button>
 
             {/* Auth / User */}
-            {mockUser ? (
-              <Link href="/dashboard">
-                <div className="flex items-center gap-2 rounded-lg p-1.5 hover:bg-secondary-50 transition-colors">
-                  <Avatar src={mockUser.avatar} alt={mockUser.name} size="sm" />
-                  <span className="hidden lg:block text-sm font-medium text-secondary-700">
-                    {mockUser.name}
-                  </span>
-                </div>
-              </Link>
+            {isAuthenticated && user ? (
+              <Popover open={popoverOpen} onOpenChange={setPopoverOpen}>
+                <PopoverTrigger asChild>
+                  <button className="flex items-center gap-2 rounded-lg p-1.5 hover:bg-secondary-50 transition-colors">
+                    <Avatar
+                      src={user.avatar || ""}
+                      alt={user.name}
+                      size="sm"
+                      fallback={user.name?.charAt(0)?.toUpperCase() || "U"}
+                    />
+                    <span className="hidden lg:block text-sm font-medium text-secondary-700">
+                      {user.name}
+                    </span>
+                    <ChevronDown className="hidden lg:block h-4 w-4 text-secondary-400" />
+                  </button>
+                </PopoverTrigger>
+                <PopoverContent className="w-56 p-2" align="end">
+                  <div className="border-b px-3 py-2">
+                    <p className="text-sm font-medium text-secondary-900">{user.name}</p>
+                    <p className="text-xs text-secondary-500">{user.email}</p>
+                  </div>
+                  <div className="mt-2 space-y-1">
+                    <Link
+                      href={getDashboardLink()}
+                      onClick={() => setPopoverOpen(false)}
+                      className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 transition-colors"
+                    >
+                      <LayoutDashboard className="h-4 w-4" />
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      disabled={isLoggingOut}
+                      className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors disabled:opacity-50"
+                    >
+                      <LogOut className="h-4 w-4" />
+                      {isLoggingOut ? "Logging out..." : "Sign Out"}
+                    </button>
+                  </div>
+                </PopoverContent>
+              </Popover>
             ) : (
               <div className="hidden sm:flex items-center gap-2">
                 <Link href="/login">
@@ -142,15 +206,27 @@ export function Navbar() {
             ))}
           </div>
           <div className="border-t pt-4">
-            {mockUser ? (
-              <Link
-                href="/dashboard"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-secondary-600 hover:bg-secondary-50"
-              >
-                <User className="h-4 w-4" />
-                Dashboard
-              </Link>
+            {isAuthenticated && user ? (
+              <div className="space-y-2">
+                <Link
+                  href={getDashboardLink()}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-secondary-600 hover:bg-secondary-50 transition-colors"
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Sign Out
+                </button>
+              </div>
             ) : (
               <div className="flex flex-col gap-2">
                 <Link href="/login" onClick={() => setMobileMenuOpen(false)}>

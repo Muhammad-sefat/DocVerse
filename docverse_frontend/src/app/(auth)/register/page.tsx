@@ -2,14 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { BookOpen, Eye, EyeOff, UserPlus, User } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { registerUser } from "@/redux/features/authSlice";
 
 const registerSchema = z
   .object({
@@ -27,8 +31,12 @@ const registerSchema = z
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { isLoading, error } = useAppSelector((state) => state.auth);
+
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -43,10 +51,19 @@ export default function RegisterPage() {
   const selectedRole = watch("role");
 
   const onSubmit = async (data: RegisterFormData) => {
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsLoading(false);
-    // TODO: Implement actual registration with Redux
+    const result = await dispatch(registerUser({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      role: data.role as import("@/types").UserRole,
+    }));
+
+    if (registerUser.fulfilled.match(result)) {
+      toast.success(result.payload?.message || "Account created successfully");
+      router.push("/");
+    } else if (registerUser.rejected.match(result)) {
+      toast.error((result.payload as string) || "Registration failed");
+    }
   };
 
   return (
@@ -186,6 +203,12 @@ export default function RegisterPage() {
             )}
           </Button>
         </form>
+
+        {error && (
+          <p className="mt-4 text-center text-sm text-red-500">
+            {error}
+          </p>
+        )}
 
         <div className="mt-6 text-center">
           <p className="text-sm text-secondary-500">

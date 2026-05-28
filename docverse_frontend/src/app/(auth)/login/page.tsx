@@ -2,13 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { BookOpen, Eye, EyeOff, LogIn } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { loginUser } from "@/redux/features/authSlice";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -19,8 +23,11 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { isLoading, error } = useAppSelector((state) => state.auth);
+
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -31,11 +38,17 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    setIsLoading(true);
-    // Simulate login
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsLoading(false);
-    // TODO: Implement actual login with Redux
+    const result = await dispatch(loginUser({
+      email: data.email,
+      password: data.password,
+    }));
+
+    if (loginUser.fulfilled.match(result)) {
+      toast.success(result.payload?.message || "Logged in successfully");
+      router.push("/");
+    } else if (loginUser.rejected.match(result)) {
+      toast.error((result.payload as string) || "Login failed");
+    }
   };
 
   return (
@@ -138,6 +151,12 @@ export default function LoginPage() {
             )}
           </Button>
         </form>
+
+        {error && (
+          <p className="mt-4 text-center text-sm text-red-500">
+            {error}
+          </p>
+        )}
 
         <div className="mt-6 text-center">
           <p className="text-sm text-secondary-500">

@@ -2,7 +2,8 @@ export const APP_NAME = "DocVerse";
 export const APP_DESCRIPTION =
   "Your premier digital library platform. Browse, borrow, and buy books from renowned authors worldwide.";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1";
 
 export const BOOK_FORMATS = ["PDF", "EPUB", "HARDCOVER", "PAPERBACK"] as const;
 

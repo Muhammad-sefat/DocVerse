@@ -1,45 +1,64 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import axios from "axios";
 import type { LoginFormData, RegisterFormData, User } from "@/types";
-import { mockUsers } from "@/data/mock-data";
+import { API_BASE_URL } from "@/constants";
 
-// TODO: Replace with actual API calls
+const api = axios.create({
+  baseURL: API_BASE_URL,
+  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+interface AuthResponse {
+  success: boolean;
+  message: string;
+  data: User;
+}
+
 const authService = {
-  async login(data: LoginFormData): Promise<User> {
-    // Simulate API call
-    const user = mockUsers.find((u) => u.email === data.email);
-    if (!user) throw new Error("Invalid email or password");
-    return user;
+  async login(data: LoginFormData): Promise<{ user: User; message: string }> {
+    const response = await api.post<AuthResponse>("/auth/login", {
+      email: data.email,
+      password: data.password,
+    });
+    return {
+      user: response.data.data,
+      message: response.data.message,
+    };
   },
 
-  async register(data: RegisterFormData): Promise<User> {
-    // Simulate API call
-    const newUser: User = {
-      id: `user-${Date.now()}`,
+  async register(
+    data: RegisterFormData,
+  ): Promise<{ user: User; message: string }> {
+    const response = await api.post<AuthResponse>("/auth/register", {
       name: data.name,
       email: data.email,
-      password: "hashed",
+      password: data.password,
       role: data.role,
-      avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${data.name}`,
-      bio: "",
-      isActive: true,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+    });
+    return {
+      user: response.data.data,
+      message: response.data.message,
     };
-    return newUser;
   },
 
-  async logout(): Promise<void> {
-    // Simulate API call
-    return;
+  async logout(): Promise<{ message: string }> {
+    const response = await api.post<{ success: boolean; message: string }>(
+      "/auth/logout",
+    );
+    return { message: response.data.message };
   },
 
   async getProfile(): Promise<User> {
-    const user = mockUsers[0];
-    if (!user) throw new Error("Not authenticated");
-    return user;
-  },
-
-  async updateProfile(data: Partial<User>): Promise<User> {
-    return { ...mockUsers[0], ...data };
+    const response = await api.get<{ success: boolean; data: any }>("/auth/me");
+    // Map backend response (profileImage) to frontend type (avatar)
+    const data = response.data.data;
+    return {
+      ...data,
+      avatar: data.avatar || data.profileImage || "",
+    };
   },
 };
 
